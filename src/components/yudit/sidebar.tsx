@@ -12,6 +12,7 @@ import {
   FileCog,
   Users,
   ClipboardCheck,
+  Newspaper,
 } from "lucide-react";
 import { useYudit, canManageWorkspace } from "@/lib/yudit/store";
 import type { ViewKey, UserRole } from "@/lib/yudit/types";
@@ -41,6 +42,7 @@ function getNavItems(role: UserRole | undefined): NavItem[] {
     { key: "convert", label: "Konversi Dokumen", icon: FileCog },
     { key: "monthly", label: "Per Bulan", icon: CalendarDays },
     { key: "stats", label: "Statistik", icon: BarChart3 },
+    { key: "news", label: "Berita", icon: Newspaper },
   );
 
   if (role === "owner" || role === "super_admin") {

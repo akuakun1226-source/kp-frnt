@@ -20,6 +20,7 @@ import { LoginView } from "./views/login-view";
 import { FilesView } from "./views/files-view";
 import { MonthlyView } from "./views/monthly-view";
 import { StatsView } from "./views/stats-view";
+import { NewsView } from "./views/news-view";
 import { DrivesView } from "./views/drives-view";
 import { ConvertView } from "./views/convert-view";
 import { CollaboratorsView } from "./views/collaborators-view";
@@ -188,6 +189,8 @@ function ViewRouter({ view }: { view: string }) {
       return <MonthlyView />;
     case "stats":
       return <StatsView />;
+    case "news":
+      return <NewsView />;
     case "drives":
       return <DrivesView />;
     case "collaborators":

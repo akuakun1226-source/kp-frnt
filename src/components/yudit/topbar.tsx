@@ -8,6 +8,7 @@ const TITLES: Record<ViewKey, string> = {
   files: "My Files",
   monthly: "Arsip Per Bulan",
   stats: "Statistik & Analytics",
+  news: "Berita",
   drives: "Google Drive Accounts",
   convert: "File Conversion",
   collaborators: "Collaborators",
@@ -77,20 +78,24 @@ export function Topbar() {
 
         {/* Actions */}
         <div className="flex shrink-0 items-center gap-2">
-          <button
-            onClick={handleNewFolder}
-            className="hidden h-9 items-center gap-2 rounded-lg border border-[var(--y-border)] bg-[var(--y-bg-elev)] px-3 text-[13px] font-semibold text-[var(--y-text)] transition-all hover:border-[var(--y-primary)] hover:bg-[var(--y-bg-hover)] sm:inline-flex"
-          >
-            <FolderPlus size={15} />
-            <span className="hidden md:inline">New Folder</span>
-          </button>
-          <button
-            onClick={triggerUpload}
-            className="y-gradient-brand y-glow-primary inline-flex h-9 items-center gap-2 rounded-lg px-3.5 text-[13px] font-semibold text-white transition-all hover:-translate-y-0.5 sm:px-4"
-          >
-            <Upload size={15} />
-            <span>Upload</span>
-          </button>
+          {currentView !== "news" && (
+            <>
+              <button
+                onClick={handleNewFolder}
+                className="hidden h-9 items-center gap-2 rounded-lg border border-[var(--y-border)] bg-[var(--y-bg-elev)] px-3 text-[13px] font-semibold text-[var(--y-text)] transition-all hover:border-[var(--y-primary)] hover:bg-[var(--y-bg-hover)] sm:inline-flex"
+              >
+                <FolderPlus size={15} />
+                <span className="hidden md:inline">New Folder</span>
+              </button>
+              <button
+                onClick={triggerUpload}
+                className="y-gradient-brand y-glow-primary inline-flex h-9 items-center gap-2 rounded-lg px-3.5 text-[13px] font-semibold text-white transition-all hover:-translate-y-0.5 sm:px-4"
+              >
+                <Upload size={15} />
+                <span>Upload</span>
+              </button>
+            </>
+          )}
         </div>
       </div>
     </header>

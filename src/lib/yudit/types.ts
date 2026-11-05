@@ -3,6 +3,7 @@ export type ViewKey =
   | "files"
   | "monthly"
   | "stats"
+  | "news"
   | "drives"
   | "convert"
   | "collaborators"
