@@ -15,6 +15,7 @@ import {
   Newspaper,
 } from "lucide-react";
 import { useYudit, canManageWorkspace } from "@/lib/yudit/store";
+import { signOutNews } from "@/lib/news/api";
 import type { ViewKey, UserRole } from "@/lib/yudit/types";
 import { formatBytes } from "@/lib/yudit/utils";
 import { cn } from "@/lib/utils";
@@ -79,7 +80,14 @@ export function Sidebar() {
   const pct = pool.total > 0 ? Math.round((pool.used / pool.total) * 100) : 0;
 
   const handleLogout = () => {
-    showConfirm("Logout?", "Kamu akan keluar dari akun ini.", logout);
+    showConfirm("Logout?", "Kamu akan keluar dari akun ini.", async () => {
+      try {
+        await signOutNews();
+      } catch {
+        // Logout arsip tetap jalan walau sesi Berita tidak tersedia.
+      }
+      logout();
+    });
   };
 
   const convertingCount = conversionJobs.filter(
