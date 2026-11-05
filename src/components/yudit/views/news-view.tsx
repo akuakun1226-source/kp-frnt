@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ManualArticlesTab } from "@/components/yudit/news/manual-articles-tab";
 import { NewsLoginDialog } from "@/components/yudit/news/news-login-dialog";
 import { NewsStatusCard } from "@/components/yudit/news/news-status-card";
+import { ScrapedArticlesTab } from "@/components/yudit/news/scraped-articles-tab";
 import { getScrapeStatus, signOutNews } from "@/lib/news/api";
 import type { NewsSession, ScrapeStatus } from "@/lib/news/types";
 import { useNewsSession } from "@/lib/news/use-news-session";
@@ -137,9 +138,7 @@ export function NewsView() {
         </TabsContent>
 
         <TabsContent value="scraped">
-          <div className="y-glass rounded-2xl border border-[var(--y-border)] p-6 text-[13px] text-[var(--y-text-mute)]">
-            Daftar hasil scraping akan tampil di sini.
-          </div>
+          <ScrapedArticlesTab />
         </TabsContent>
       </Tabs>
 

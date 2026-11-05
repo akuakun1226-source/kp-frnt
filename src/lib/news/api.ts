@@ -182,7 +182,7 @@ export async function listManualArticles(
     .select<typeof MANUAL_COLUMNS, ManualArticleRow>(MANUAL_COLUMNS, {
       count: "exact",
     });
-  const safe = params.search?.replace(/[%,]/g, " ").trim();
+  const safe = params.search?.replace(/[%,()]/g, " ").trim();
   const filtered = safe
     ? base.or(`title.ilike.%${safe}%,summary.ilike.%${safe}%`)
     : base;
@@ -217,8 +217,10 @@ export async function listScrapedArticles(
   const base = client
     .from("scraped_articles")
     .select(SCRAPED_COLUMNS, { count: "exact" });
-  const safe = params.search?.replace(/[%,]/g, " ").trim();
-  const searched = safe ? base.ilike("title", `%${safe}%`) : base;
+  const safe = params.search?.replace(/[%,()]/g, " ").trim();
+  const searched = safe
+    ? base.or(`title.ilike.%${safe}%,summary.ilike.%${safe}%`)
+    : base;
   const source = params.source?.trim();
   const filtered = source ? searched.eq("source", source) : searched;
 
