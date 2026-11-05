@@ -5,6 +5,7 @@ import { Loader2, LogIn, LogOut } from "lucide-react";
 import { toast } from "sonner";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ManualArticlesTab } from "@/components/yudit/news/manual-articles-tab";
 import { NewsLoginDialog } from "@/components/yudit/news/news-login-dialog";
 import { NewsStatusCard } from "@/components/yudit/news/news-status-card";
 import { getScrapeStatus, signOutNews } from "@/lib/news/api";
@@ -128,13 +129,11 @@ export function NewsView() {
         </TabsList>
 
         <TabsContent value="manual">
-          <div className="y-glass rounded-2xl border border-[var(--y-border)] p-6 text-[13px] text-[var(--y-text-mute)]">
-            {session
-              ? `Masuk sebagai ${session.email}. Daftar artikel manual akan tampil di sini.`
-              : canWrite
-                ? "Masuk untuk menulis agar bisa membuat artikel manual."
-                : "Anda dapat melihat artikel manual yang sudah terbit."}
-          </div>
+          <ManualArticlesTab
+            session={session}
+            canWrite={canWrite}
+            onRequireLogin={() => setLoginOpen(true)}
+          />
         </TabsContent>
 
         <TabsContent value="scraped">
