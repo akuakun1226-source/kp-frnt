@@ -632,7 +632,7 @@ Mungkin ada migration lain atau schema produksi yang tidak masuk export. Namun, 
 | MAIL-01 | P1 | Resend failure tidak otomatis fallback ke GAS | Email gagal walau kanal alternatif tersedia | Implementasikan failover eksplisit; dedupe event lintas provider |
 | OPS-01 | P1 | Scheduler in-process berpotensi aktif pada tiap replica | Laporan/email ganda jika backend diskalakan | Worker singleton/cron eksternal/distributed lock |
 | OPS-02 | P1 | Docker healthcheck selalu port 8000 | Status container bisa unhealthy bila runtime port berbeda | Gunakan port yang sama/healthcheck via env atau endpoint Railway |
-| BUILD-01 | P1 | `vercel.json` memakai Yarn frozen, export menampilkan `package-lock.json` | Build tidak reproducible bila yarn.lock tidak tersedia/berbeda | Tetapkan package manager dan commit lockfile yang sesuai |
+| BUILD-01 | Selesai | `vercel.json` memakai Yarn frozen, export menampilkan `package-lock.json` | Build tidak reproducible bila yarn.lock tidak tersedia/berbeda | Diselaraskan ke npm: `yarn.lock` dihapus, `vercel.json` memakai `npm ci --no-audit --no-fund` dan `npm run build` |
 | MAIL-02 | P2 | Provider accepted tidak berarti inbox placement | User dapat mengira email pasti masuk inbox | Pisahkan accepted/delivered/bounced/spam; webhook provider + monitoring |
 | PRIV-01 | P2 | `share_logs` menyimpan IP dan user-agent | Data personal/log akses perlu retensi dan tujuan jelas | Privacy notice, retention window, akses terbatas |
 | TIME-01 | P2 | Tanggal upload default UTC, scheduler Asia/Jakarta | Arsip bulan/hari bisa berbeda sekitar pergantian tanggal | Standardisasi timezone bisnis |
