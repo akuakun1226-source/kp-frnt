@@ -5,6 +5,8 @@
 **Sumber utama:** `universal_project_analysis(6).txt` (frontend `kp-frnt`) dan `universal_project_analysis(7).txt` (backend `cloud-projek`)  
 **Status:** Audit statis atas snapshot kode dan dokumentasi yang diberikan; bukan hasil penetration test atau pengujian langsung layanan produksi.
 
+> **Modul Berita:** penjelasan teknis modul Berita (Supabase, scraping harian, build/deploy) ada di [`README-BERITA.md`](./README-BERITA.md).
+
 ---
 
 ## 1. Ringkasan eksekutif
